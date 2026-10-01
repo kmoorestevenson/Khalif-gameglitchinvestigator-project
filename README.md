@@ -26,27 +26,40 @@ It wrote the code, ran away, and now the game is unplayable.
 ## 📝 Document Your Experience
 
 - [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+The game's purpose is to guess the random number. It rewards a player with points if they guess higher than the secret number, every other guess.  The player loses points every guess below the number.
 
+- [ ] Detail which bugs you found.
+1. There was an issue with the outcome message when the player guessed "Too High" or "Too Low".
+2. In 'Check Message' the string input would not be converted to an int causing issues with evaluating the guess number vs. the secret number.
+3. The test file did not extract the correct string from "Check Message".
+4. The difficulty range had an error, normal was set to 1-100, where hard was set to 1-50.
+
+- [ ] Explain what fixes you applied.
+1. Fix the guess "Too High" or "Too Low" outcome string and changed the guess variable type to int.
+2. Fix the "New Game" button, changing the 'session_state' to "playing", setting the 'secret' number to the corresponding difficulty setting, and resetting the debug 'session_history' array.
+3. Change the difficulty levels, Easy = '1-20' , Normal = '1-50', and Difficult = '1-100'.
+4. Fix the unit tests by changing the output from 'check_guess' to 'result[0]'.
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. Load the game
+2. Type in a guess number.
+3. Press the 'Submit' button.
+4. View hint to see if guess is too low or too high if the guess is incorrect.
+5. Continue steps 2-5 until you find the secret number or run out of turns.
+6. Press 'New Game' to restart the game.
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
-
 ## 🧪 Test Results
 
 ```
-# Paste your pytest output here, e.g.:
-# pytest tests/
-# ========================= X passed in 0.XXs =========================
+rootdir: /Users/khalif/Desktop/Dev/ai110-module1show-gameglitchinvestigator-starter
+collected 3 items                                                              
+
+tests/test_game_logic.py ...                                             [100%]
+
+============================== 3 passed in 0.01s ===============================
 ```
 
 ## 🚀 Stretch Features
